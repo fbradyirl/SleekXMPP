@@ -124,8 +124,11 @@ class EchoBot(sleekxmpp.ClientXMPP):
                    how it may be used.
         """
         if msg['type'] in ('chat', 'normal'):
-            msg.reply("Thanks for sending\n%(body)s" % msg).send()
+            #msg.reply("Thanks for sending\n%(body)s" % msg).send()
 
+            self.send_message(mto=msg['from'],
+                              mtype='chat',
+                              mbody='Thanks for sending:\n%s' % msg['body'])
 
 if __name__ == '__main__':
     # Setup the command line arguments.
